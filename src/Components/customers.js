@@ -19,24 +19,12 @@ export default function Customers() {
     //   },[]);
 
       useEffect(() => {
-          var query = "";
-
-          var url3 = new URL(url2), params = {id: Id}
-
-        if(companyName != "")
-        query += "?companyname=" + companyName
-        if(Id != "")
-        query += "?id=" + Id
-        if(contactName != "")
-        query += "?contactname=" + contactName
 
         var url = new URL(url2),
         params = {id:Id, contactname:contactName, companyname:companyName}
      Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
         fetch(url).then(resp => resp.json()).then(data => setcont(data));
 
-
-        // fetch(url2 + query, { mode: 'cors'}).then(resp => resp.json()).then(data => setcont(data));
 
       },[companyName, Id, contactName])
 
